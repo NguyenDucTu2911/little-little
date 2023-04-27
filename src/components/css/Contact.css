@@ -1,0 +1,58 @@
+.title {
+    position: absolute;
+    width: 328px;
+    height: 100px;
+    left: 796px;
+    top: 144px;
+    font-family: 'iCiel Koni';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 96px;
+    line-height: 100px;
+    color: #FFFFFF;
+}
+
+.ContacBody {
+    position: absolute;
+    left: 13%;
+    right: 35.5%;
+    top: 34.61%;
+    bottom: 8%;
+    background: #FFCA7B;
+    border-radius: 45px;
+}
+
+.contactLayout {
+    position: absolute;
+    left: 0%;
+    right: 0.2%;
+    top: 0%;
+    bottom: 1.61%;
+    border-radius: 42px;
+    background: #FDE8B3;
+}
+
+.ContactBorder {
+    position: absolute;
+    left: 1.5%;
+    right: 1.5%;
+    border-radius: 25px;
+    top: 2.09%;
+    bottom: 1.7%;
+    background: #FFF6D4;
+    border: 3px dashed #FFB489;
+}
+
+.ContacContent {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+
+    position: absolute;
+    width: 808px;
+    height: 138px;
+    left: 68px;
+    top: 159px;
+}

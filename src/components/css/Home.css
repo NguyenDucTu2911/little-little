@@ -1,0 +1,16 @@
+.btnBuy {
+    position: absolute;
+    left: 8%;
+    right: 0%;
+    top: 86%;
+    bottom: 5.49%;
+    background: #BD000B;
+    width: 360px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.btnBuy:hover {
+    background: #FF000A;
+}
