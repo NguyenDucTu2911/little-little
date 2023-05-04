@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import CheckReducers from "./CheckReducers";
+import userSlice from "../slice/userSlice";
 
 const reducers = combineReducers({
-    bank: CheckReducers
+    users: userSlice
 })
 
 export type State = ReturnType<typeof reducers>

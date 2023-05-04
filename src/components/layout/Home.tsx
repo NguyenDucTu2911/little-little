@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from '@emotion/styled'
 import lisa from "../../img/Lisa.png"
 import Converted from "../../img/6.png"
@@ -13,8 +13,15 @@ import { Header } from './header';
 import start from "../../img/Start.png"
 import vector from "../../img/Vector.png"
 import { Input } from '../../Html/Input';
-import { CustomButton } from '../../Html/Button';
+import { Button } from '../../Html/Button';
 import "../css/Home.css"
+import { useForm, SubmitHandler } from "react-hook-form";
+import DatePicker from '../../Html/DatePickers';
+import { z, ZodType } from 'zod';
+import { zodResolver } from "@hookform/resolvers/zod"
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { db } from '../../firebase/config';
+import { getDatabase, ref, child, get } from "firebase/database";
 
 
 const Backgrounds = styled.div`
@@ -394,12 +401,42 @@ const Combobox = styled.input`
     border-radius: 16px;
 `
 
+type FormValues = {
+    Name: string;
+    Phone: number;
+    email: string;
+    quantity: number;
+    // Date: Date;
+};
+
 export const Home = () => {
 
-    const handleBuy = () => {
-        alert("ashdhasjhd")
-    }
+    // async function getCities(db: any) {
+    //     const citiesCol = collection(db, 'users');
+    //     const citySnapshot = await getDocs(citiesCol);
+    //     const cityList = citySnapshot.docs.map(doc => doc.data());
+    //     console.log("check database", cityList)
+    //     return cityList;
+    // }
+    // useEffect(() => {
+    //     getCities(db)
+    // }, [])
 
+    const schema: ZodType<FormValues> = z
+        .object({
+            Name: z.string().min(2).max(30),
+            email: z.string().email(),
+            quantity: z.number(),
+            Phone: z.number().min(10),
+            // Date: z.date().default(() => new Date())
+        })
+    // .refine()
+
+    const { register, handleSubmit,
+        formState: { errors }
+    } = useForm<FormValues>({ resolver: zodResolver(schema) })
+
+    const onSubmit = (data: FormValues) => console.log(data);
     return (
         <>
             <Backgrounds>
@@ -452,18 +489,25 @@ export const Home = () => {
                                             </ContactHeaderContent>
                                         </ContactHeaderItem>
                                     </ContactHeader>
+                                    <form onSubmit={handleSubmit(onSubmit)}>
+                                        <Combobox type='text' placeholder='Goi gia dinh' />
+                                        <div className='quanyity'>
+                                            <InputQuantity {...register("quantity", { valueAsNumber: true })} placeholder='Số Lượng Vé' />
+                                            {/* {errors.Name && <span>vui long nhap so luong ve</span>} */}
 
-                                    <Combobox type='text' placeholder='Goi gia dinh' />
-                                    <InputQuantity type='text' placeholder='Số Lượng Vé' id='quantity' />
-                                    <Inputname type='text' placeholder="Họ Và Tên" id="name" />
-                                    <InputSdt type='number' placeholder="Số Điện Thoại" min="0" max="10" />
-                                    <InputEmail placeholder="Địa Chỉ Email" type="email" id="email"
-                                        pattern=".+@globex\.com" />
-                                    <CustomButton
-                                        className="btnBuy"
-                                        onclick={() => handleBuy()}
-                                        children="Đặt Vé"
-                                    />
+                                        </div>
+                                        <DatePicker className='Datepicker' onChange={(time) => console.log(time)} />
+                                        <Inputname {...register("Name")} placeholder="Họ Và Tên" />
+                                        <InputSdt {...register("Phone", { valueAsNumber: true })} placeholder="Số Điện Thoại" />
+                                        <InputEmail placeholder="Địa Chỉ Email" type="email" {...register("email")} />
+                                        {/* <CustomButton
+                                            className="btnBuy"
+                                            type="submit"
+                                            onclick={() => handleBuy()}
+                                            children="Đặt Vé"
+                                        /> */}
+                                        <Button type="submit" className="btnBuy">Đặt Vé</Button>
+                                    </form>
                                 </ContactLayOutBoder>
                             </ContactLayOutLine>
                         </ContactLayOut>

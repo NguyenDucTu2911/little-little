@@ -1,10 +1,10 @@
 
 type ButtonProps = {
-    children: string;
-    onclick: () => void
+    children?: string;
+    onclick?: () => void
 } & Omit<React.ComponentProps<"button">, "children">;
 
-export const CustomButton = ({ children, onclick, ...rest }: ButtonProps) => {
+export const Button = ({ children, onclick, ...rest }: ButtonProps) => {
     return (
         <button
             onClick={onclick}

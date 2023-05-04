@@ -3,6 +3,10 @@ import styled from '@emotion/styled'
 import Bg from "../../img/bg.png"
 import alax from "../../img/Alex_AR.png"
 import "../css/Contact.css"
+import FormContact from './form/formContact';
+import phone from "../../img/telephone.png"
+import email from "../../img/gmail.png"
+import address from "../../img/maps.png"
 
 interface ContactProps { }
 
@@ -53,26 +57,40 @@ const Content = styled.p`
     opacity: 0.7;
 `
 
-const InputName = styled.input`
-    width: 293px;
-    height: 56px;
-    background: #FFFFFF;
-    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
-    border-radius: 16px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+const Phone = styled.div`
+    position: absolute;
+    width: 39px;
+    height: 42px;
+    left: 26px;
+    top: 42px;
+    background: url(${phone});
+    background-repeat: round;
+    background-position: center;
+
 `
 
-const InputSDT = styled.input`
-    width: 293px;
-    height: 56px;
-    background: #FFFFFF;
-    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
-    border-radius: 16px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+const Email = styled.div`
+    position: absolute;
+    width: 39px;
+    height: 42px;
+    left: 26px;
+    top: 42px;
+    background: url(${email});
+    background-repeat: round;
+    background-position: center;
+
+`
+
+const Address = styled.div`
+    position: absolute;
+    width: 39px;
+    height: 42px;
+    left: 26px;
+    top: 42px;
+    background: url(${address});
+    background-repeat: round;
+    background-position: center;
+
 `
 
 export const Contact = () => {
@@ -85,10 +103,37 @@ export const Contact = () => {
                         <div className="ContactBorder">
                             <Iconalax />
                             <Content>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac mollis justo. Etiam volutpat tellus quis risus volutpat, ut posuere ex facilisis. </Content>
-                            <div className="ContacContent">
-                                <InputName type='text' placeholder='Tên' id='name' />
-                                <InputSDT type='number' placeholder='Số Điện Thoại' id='SDT' />
-                            </div>
+                            <FormContact />
+                        </div>
+                    </div>
+                </div>
+                <div className="contactRights">
+                    <div className="contactBorder">
+                        <div className="contactItem">
+                            <Address />
+                            <p className='contentright'>Địa chỉ:<br />
+                                86/33 Âu Cơ, Phường 9, Quận Tân Bình, TP. Hồ Chí Minh
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div className="contactMid">
+                    <div className="contactBorder">
+                        <div className="contactItem">
+                            <Email />
+                            <p className='contentright'>Email:<br />
+                                investigate@your-site.com
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div className="contactbutton">
+                    <div className="contactBorder">
+                        <div className="contactItem">
+                            <Phone />
+                            <p className='contentright'>Điện thoại:<br />
+                                +84 145 689 798
+                            </p>
                         </div>
                     </div>
                 </div>

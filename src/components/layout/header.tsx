@@ -136,9 +136,8 @@ export const Header = () => {
             <Logo />
             <Navbody>
                 <HeaderNav>
-
                     < HeaderNavLink to="/"
-
+                    // className={({isActive})=>(isActive? "active" : "")}
                     ><Content>Trang chủ</Content></HeaderNavLink>
                     < HeaderNavLink to="/sukien"
 

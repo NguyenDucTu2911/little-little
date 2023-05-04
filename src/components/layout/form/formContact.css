@@ -1,0 +1,112 @@
+.ContacContent {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+
+    position: absolute;
+    width: 808px;
+    height: 138px;
+    left: 68px;
+    top: 159px;
+}
+
+.contactLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+    width: 293px;
+    height: 136px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.Name {
+    width: 293px;
+    height: 56px;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.Phone {
+    width: 293px;
+    height: 56px;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.contactRight {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+
+    width: 491px;
+    height: 138px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.email {
+    width: 491px;
+    height: 56px;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.address {
+    width: 491px;
+    height: 58px;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.message {
+    position: absolute;
+    width: 808px;
+    height: 120px;
+    left: 2px;
+    top: 167px;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+}
+
+.btncontact {
+    position: absolute;
+    left: 25%;
+    right: 0%;
+    top: 230%;
+    bottom: 10.49%;
+    background: #FF000A;
+    width: 368px;
+    height: 38px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btncontact:hover {
+    background: #FF000A;
+}
