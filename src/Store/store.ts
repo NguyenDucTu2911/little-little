@@ -1,15 +1,27 @@
-import { createStore, applyMiddleware, combineReducers } from "redux";
-import thunk from "redux-thunk"
-import { composeWithDevTools } from "redux-devtools-extension"
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import reducers from "./reducers/index";
+import thunk, { ThunkDispatch } from 'redux-thunk';
 
-const store = createStore(
-    reducers,
-    composeWithDevTools(applyMiddleware(thunk))
-)
+// Define root state type
+export type RootState = ReturnType<typeof store.getState>;
+
+// Define thunk action type
+export type AppThunk<ReturnType = void> = ThunkAction<
+    ReturnType,
+    RootState,
+    unknown,
+    Action<string>
+>;
+
+// Configure store with thunk middleware
+export const store = configureStore({
+    reducer: reducers,
+    middleware: [thunk],
+});
 
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+// Define dispatch type using ThunkDispatch
+export type AppDispatch = ThunkDispatch<RootState, unknown, Action<string>>;
 
-export default store
+// Export store and dispatch types
+export default store;

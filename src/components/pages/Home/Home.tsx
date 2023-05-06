@@ -1,26 +1,26 @@
 import React, { useEffect } from 'react';
 import styled from '@emotion/styled'
-import lisa from "../../img/Lisa.png"
-import Converted from "../../img/6.png"
-import damsen from "../../img/logodamsen.png"
-import hair from "../../img/hair.png"
-import Mid from "../../img/3.png"
-import Mid1 from "../../img/1.png"
-import Right from "../../img/5.png"
-import Buttons from "../../img/4.png"
-import Bg from "../../img/bg.png"
-import { Header } from './header';
-import start from "../../img/Start.png"
-import vector from "../../img/Vector.png"
-import { Input } from '../../Html/Input';
-import { Button } from '../../Html/Button';
-import "../css/Home.css"
+import lisa from "../../../img/Lisa.png"
+import Converted from "../../../img/6.png"
+import damsen from "../../../img/logodamsen.png"
+import hair from "../../../img/hair.png"
+import Mid from "../../../img/3.png"
+import Mid1 from "../../../img/1.png"
+import Right from "../../../img/5.png"
+import Buttons from "../../../img/4.png"
+import Bg from "../../../img/bg.png"
+import { Header } from '../../layout/header';
+import start from "../../../img/Start.png"
+import vector from "../../../img/Vector.png"
+import { Input } from '../../../Html/Input';
+import { Button } from '../../../Html/Button';
+import "./Home.css"
 import { useForm, SubmitHandler } from "react-hook-form";
-import DatePicker from '../../Html/DatePickers';
+import DatePicker from '../../../Html/DatePickers';
 import { z, ZodType } from 'zod';
 import { zodResolver } from "@hookform/resolvers/zod"
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import { db } from '../../firebase/config';
+import { db } from '../../../firebase/config';
 import { getDatabase, ref, child, get } from "firebase/database";
 
 

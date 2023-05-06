@@ -1,90 +1,82 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input } from '../../../Html/Input';
 import "./formContact.css"
-import { useForm, SubmitHandler } from "react-hook-form";
-import { z, ZodType } from 'zod';
-import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from '../../../Html/Button';
 
 import { useAppDispatch, useAppSelector } from '../../../Store/hooks';
+import { RootState } from '../../../Store/store';
+import { createAsync, Contact } from '../../../Store/slice/userSlice';
+import { useSelector } from 'react-redux';
 
-import { ref, child, get } from "firebase/database";
-import { db } from '../../../firebase/config';
+import { toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
-
-import { fetchTodos, addTodo } from '../../../Store/slice/userSlice';
-
-interface FormContactProps { }
-
-type FormValues = {
-    Name: string;
-    Phone: number;
-    email: string;
-    address: string;
-    message: string;
-};
-
-const FormContact: React.FC<FormContactProps> = (props) => {
+const FormContact: React.FC = () => {
     const dispatch = useAppDispatch();
+    const [formData, setFormData] = useState<Partial<Contact>>({});
+    const loading = useSelector((state: RootState) => state.users.loading);
+    const error = useSelector((state: RootState) => state.users.error);
 
-    const dbRef = ref(db);
+    // onchange form
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
+        setFormData({ ...formData, [name]: value });
+    };
 
-    // get(child(dbRef, `users/1`)).then((snapshot) => {
-    //     if (snapshot.exists()) {
-    //         const response = snapshot.val()
-    //         console.log(response)
-    //         return response
-    //     } else {
-    //         console.log("No data available");
-    //     }
-    // }).catch((error) => {
-    //     console.error(error);
-    // });
-
-    const schema: ZodType<FormValues> = z
-        .object({
-            Name: z.string().min(2).max(30),
-            email: z.string().email(),
-            address: z.string(),
-            Phone: z.number().min(10),
-            message: z.string()
-        })
-
-
-    const { register, handleSubmit,
-        formState: { errors }
-    } = useForm<FormValues>({ resolver: zodResolver(schema) })
-
-    const onSubmit = (data: FormValues) => {
-        console.log(data.Name)
-        const name = data.Name;
-        const Phone = data.Phone;
-        const email = data.email;
-        const address = data.address;
-        const message = data.message
-        // dispatch(addTodo({ name, Phone, email,address,message }));
+    // submit form 
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        dispatch(createAsync(formData as Contact));
+        setFormData({});
+        toast.success('Gửi liên hệ thành công.Vui lòng kiên nhẫn đợi phản hồi từ chúng tôi, bạn nhé!', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
     };
 
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            {error && <p>{error}</p>}
+            <form onSubmit={handleSubmit}>
                 <div className="ContacContent">
                     <div className="contactLeft">
-                        <input className='Name' type='text' placeholder='Tên'
-                            {...register("Name")} />
-                        <input className='Phone' type='number' placeholder='Số Điện Thoại'
-                            {...register("Phone", { valueAsNumber: true })}
+                        <input className='Name' type='text' placeholder='Tên' name='Name'
+                            value={formData.Name || ""}
+                            // {...register("Name")} 
+                            onChange={handleInputChange}
+                        />
+                        <input className='Phone' type='number' placeholder='Số Điện Thoại' name='Phone'
+                            // {...register("Phone", { valueAsNumber: true })}
+                            value={formData.Phone || ""}
+                            onChange={handleInputChange}
+
                         />
                     </div>
                     <div className="contactRight">
-                        <input className='email' type='email' placeholder='Email'
-                            {...register("email")} />
-                        <input className='address' placeholder='Địa Chỉ'
-                            {...register("address")} />
+                        <input className='email' type='email' placeholder='Email' name='email'
+                            // {...register("email")}
+                            value={formData.email || ""}
+                            onChange={handleInputChange}
+                        />
+
+                        <input className='address' placeholder='Địa Chỉ' name='address'
+                            // {...register("address")}
+                            value={formData.address || ""}
+                            onChange={handleInputChange}
+                        />
                     </div>
-                    <input className="message" placeholder='Lời Nhắn'
-                        {...register("message")} />
+                    <input className="message" placeholder='Lời Nhắn' name='message'
+                        // {...register("message")}
+                        value={formData.message || ""}
+                        onChange={handleInputChange}
+                    />
                     <Button type="submit" className="btncontact">Gửi Liên Hệ</Button>
                 </div>
             </form>

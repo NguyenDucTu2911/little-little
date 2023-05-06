@@ -105,6 +105,8 @@
     height: 38px;
     border-radius: 10px;
     cursor: pointer;
+    color: #fff;
+
 }
 
 .btncontact:hover {

@@ -6,10 +6,9 @@ import {
     createRoutesFromElements, Link, Route, RouterProvider, BrowserRouter
 } from 'react-router-dom'
 import Phone from "../../img/Vector (Stroke).png"
-import { Home } from './Home';
-import { Contact } from './Contact';
-import Event from './Event';
-import { type } from 'os';
+import { Home } from '../pages/Home/Home';
+import { Contact } from '../pages/Contact/Contact';
+import Event from '../pages/Event/Event';
 
 const Navbar = styled("div")`
     position: absolute;
