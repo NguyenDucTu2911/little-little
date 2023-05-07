@@ -30,3 +30,14 @@ span {
     box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
     border-radius: 16px;
 }
+
+.css-13cymwt-control {
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px !important;
+    width: 398px;
+    height: 49px;
+    left: 14px;
+    top: 56px;
+    position: absolute;
+}

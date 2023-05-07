@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled'
-import Bg from "../../../img/bg.png"
-import alax from "../../../img/Alex_AR.png"
+import Bg from "../../../assets/img/bg.png"
+import alax from "../../../assets/img/Alex_AR.png"
 import "./Contact.css"
-import phone from "../../../img/telephone.png"
-import email from "../../../img/gmail.png"
-import address from "../../../img/maps.png"
+import phone from "../../../assets/img/telephone.png"
+import email from "../../../assets/img/gmail.png"
+import address from "../../../assets/img/maps.png"
 import FormContact from '../../layout/form/formContact';
 
 const Backgrounds = styled.div`

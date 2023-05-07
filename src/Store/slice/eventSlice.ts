@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { db } from "../../firebase/config";
+import { RootState } from "../store";
 
 export interface Customer {
     Name: string,
@@ -20,6 +21,7 @@ export interface events {
     dateStart: Date;
     dateEnd: Date;
     image: string;
+    content: string
 }
 
 interface DataState {
@@ -33,6 +35,7 @@ interface EventState {
     loading: boolean;
     error: string | null;
 }
+
 
 const initialState: DataState = {
     loading: false,
@@ -48,7 +51,7 @@ export const fetchAsync = createAsyncThunk('event/fetch', async () => {
 export const fetchOne = createAsyncThunk('event/fetchOne', async (id: string) => {
     const eventDoc = await db.collection('events').doc(id).get();
     const event = eventDoc.data() as events;
-    return { event, id };
+    return { ...event, id: eventDoc.id };
 })
 
 const eventSlice = createSlice({
@@ -71,7 +74,7 @@ const eventSlice = createSlice({
             })
             .addCase(fetchOne.fulfilled, (state, action) => {
                 state.loading = false;
-                // state.data = action.payload;
+                state.data = [action.payload];
             })
     },
 });

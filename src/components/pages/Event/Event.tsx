@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import styled from '@emotion/styled'
-import Bg from "../../../img/bg.png"
+import Bg from "../../../assets/img/bg.png"
 import "./Event.css"
 import Slider from "react-slick";
-import calendar from "../../../img/calendar.png"
+import calendar from "../../../assets/img/calendar.png"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 

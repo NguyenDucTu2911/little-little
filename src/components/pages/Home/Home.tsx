@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled'
-import lisa from "../../../img/Lisa.png"
-import Converted from "../../../img/6.png"
-import damsen from "../../../img/logodamsen.png"
-import hair from "../../../img/hair.png"
-import Mid from "../../../img/3.png"
-import Mid1 from "../../../img/1.png"
-import Right from "../../../img/5.png"
-import Buttons from "../../../img/4.png"
-import Bg from "../../../img/bg.png"
+import lisa from "../../../assets/img/Lisa.png"
+import Converted from "../../../assets/img/6.png"
+import damsen from "../../../assets/img/logodamsen.png"
+import hair from "../../../assets/img/hair.png"
+import Mid from "../../../assets/img/3.png"
+import Mid1 from "../../../assets/img/1.png"
+import Right from "../../../assets/img/5.png"
+import Buttons from "../../../assets/img/4.png"
+import Bg from "../../../assets/img/bg.png"
 import { Header } from '../../layout/header';
-import start from "../../../img/Start.png"
-import vector from "../../../img/Vector.png"
+import start from "../../../assets/img/Start.png"
+import vector from "../../../assets/img/Vector.png"
 import { Input } from '../../../Html/Input';
 import { Button } from '../../../Html/Button';
 import "./Home.css"
@@ -19,10 +19,6 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import DatePicker from '../../../Html/DatePickers';
 import { z, ZodType } from 'zod';
 import { zodResolver } from "@hookform/resolvers/zod"
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import { db } from '../../../firebase/config';
-import { getDatabase, ref, child, get } from "firebase/database";
-
 
 const Backgrounds = styled.div`
     position: relative;
@@ -390,7 +386,7 @@ const InputQuantity = styled.input`
     border-radius: 16px;
 `
 
-const Combobox = styled.input`
+const Combobox = styled.select`
     position: absolute;
     width: 398px;
     height: 49px;
@@ -409,18 +405,15 @@ type FormValues = {
     // Date: Date;
 };
 
+const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' },
+];
+
 export const Home = () => {
 
-    // async function getCities(db: any) {
-    //     const citiesCol = collection(db, 'users');
-    //     const citySnapshot = await getDocs(citiesCol);
-    //     const cityList = citySnapshot.docs.map(doc => doc.data());
-    //     console.log("check database", cityList)
-    //     return cityList;
-    // }
-    // useEffect(() => {
-    //     getCities(db)
-    // }, [])
+    const [selectedOption, setSelectedOption] = useState(null);
 
     const schema: ZodType<FormValues> = z
         .object({
@@ -490,7 +483,17 @@ export const Home = () => {
                                         </ContactHeaderItem>
                                     </ContactHeader>
                                     <form onSubmit={handleSubmit(onSubmit)}>
-                                        <Combobox type='text' placeholder='Goi gia dinh' />
+                                        {/* <Select
+                                            className='combobox'
+                                            defaultValue={selectedOption}
+                                            // onChange={setSelectedOption}
+                                            options={options}
+                                        /> */}
+                                        <Combobox name='pack' >
+                                            <option value="volvo">Gói Gia Đình</option>
+                                            <option value="saab">Gói Vip</option>
+                                            <option value="mercedes">Gói Cặp đôi</option>
+                                        </Combobox>
                                         <div className='quanyity'>
                                             <InputQuantity {...register("quantity", { valueAsNumber: true })} placeholder='Số Lượng Vé' />
                                             {/* {errors.Name && <span>vui long nhap so luong ve</span>} */}
@@ -516,8 +519,6 @@ export const Home = () => {
 
             </Backgrounds>
         </>
-
-
 
     );
 };

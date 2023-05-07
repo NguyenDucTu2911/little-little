@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled'
-import LittleLittleLogo from "../../img/Logo.png"
+import LittleLittleLogo from "../../assets/img/Logo.png"
 import {
     createBrowserRouter,
     createRoutesFromElements, Link, Route, RouterProvider, BrowserRouter
 } from 'react-router-dom'
-import Phone from "../../img/Vector (Stroke).png"
+import Phone from "../../assets/img/Vector (Stroke).png"
 import { Home } from '../pages/Home/Home';
 import { Contact } from '../pages/Contact/Contact';
 import Event from '../pages/Event/Event';
