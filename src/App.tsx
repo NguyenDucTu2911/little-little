@@ -5,6 +5,7 @@ import { Home } from './components/pages/Home/Home';
 import { Contact } from './components/pages/Contact/Contact';
 import Event from './components/pages/Event/Event';
 import DetailEvent from './components/pages/Event/detailEvent';
+import Check from './components/layout/check/check';
 import { BrowserRouter, NavLink, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/sukien" element={<Event />} />
           <Route path="/LienHe" element={<Contact />} />
           <Route path="/detailEvent/:id" element={<DetailEvent />} />
+          <Route path="/Check" element={<Check />} />
         </Routes>
       </BrowserRouter>
     </>

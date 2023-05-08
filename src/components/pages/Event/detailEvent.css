@@ -136,23 +136,18 @@
 }
 
 .eventDt-LM {
-    /* position: absolute;
+    position: absolute;
     left: 33.68%;
     right: 47.37%;
-    top: 11.62%;
-    bottom: 15.14%;
-
-    font-family: 'Montserrat';
+    top: 51.62%;
+    bottom: 50.14%;
     font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 36px;
-   
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 23px;
     display: flex;
     align-items: center;
     text-align: justify;
-
-    color: #FA7D09; */
 }
 
 .eventDt-RM {
@@ -163,10 +158,61 @@
     top: 84px;
 }
 
+.image-eventdt {
+    position: absolute;
+    width: 288px;
+    height: 208px;
+    left: 0px;
+    top: 0px;
+}
+
+.text-eventDT {
+    position: absolute;
+    left: 0.46%;
+    right: 0.59%;
+    top: 49.69%;
+    bottom: 14.53%;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    color: #000000;
+}
+
 .eventDt-R {
     position: absolute;
     width: 288px;
     height: 475px;
     left: 1174px;
     top: 84px;
+}
+
+.image-eventdt_R {
+    position: absolute;
+    width: 288px;
+    height: 208px;
+    left: 0px;
+    /* top: 0px; */
+    bottom: 40px;
+}
+
+.text-eventDT_R {
+    position: absolute;
+    left: 1.24%;
+    right: 3.82%;
+    top: -3.16%;
+    bottom: 51.38%;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    color: #000000;
 }

@@ -19,7 +19,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import DatePicker from '../../../Html/DatePickers';
 import { z, ZodType } from 'zod';
 import { zodResolver } from "@hookform/resolvers/zod"
-
+import { useNavigate } from 'react-router-dom';
+import Check from '../../layout/check/check';
 const Backgrounds = styled.div`
     position: relative;
     width: 1920px;
@@ -397,7 +398,7 @@ const Combobox = styled.select`
     border-radius: 16px;
 `
 
-type FormValues = {
+export type FormValues = {
     Name: string;
     Phone: number;
     email: string;
@@ -412,8 +413,8 @@ const options = [
 ];
 
 export const Home = () => {
-
     const [selectedOption, setSelectedOption] = useState(null);
+    const navigate = useNavigate()
 
     const schema: ZodType<FormValues> = z
         .object({
@@ -429,7 +430,10 @@ export const Home = () => {
         formState: { errors }
     } = useForm<FormValues>({ resolver: zodResolver(schema) })
 
-    const onSubmit = (data: FormValues) => console.log(data);
+    const onSubmit = (data: FormValues) => {
+        // < Check {...data} />
+        navigate('/Check');
+    }
     return (
         <>
             <Backgrounds>

@@ -84,7 +84,7 @@
 }
 
 .event_title {
-    width: 138px;
+    width: 154px;
     height: 37px;
     font-family: 'Montserrat';
     font-style: normal;
@@ -205,4 +205,11 @@
     line-height: 1;
     opacity: 1 !important;
     color: white;
+}
+
+.blocks-wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }

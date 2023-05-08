@@ -7,6 +7,9 @@ import phone from "../../../assets/img/telephone.png"
 import email from "../../../assets/img/gmail.png"
 import address from "../../../assets/img/maps.png"
 import FormContact from '../../layout/form/formContact';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Backgrounds = styled.div`
     position: relative;
