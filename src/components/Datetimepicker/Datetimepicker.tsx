@@ -1,18 +1,26 @@
-import * as React from 'react';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import React from 'react';
 
-interface DatetimepickerProps { }
+import { DatePicker } from 'antd';
+
+import moment from 'moment';
+
+
+interface DatetimepickerProps {
+    format: string;
+    onChange?: (date: moment.Moment | null, dateString: string) => void;
+}
 
 const Datetimepicker: React.FC<DatetimepickerProps> = (props) => {
+    const handleChange = (date: moment.Moment | null, dateString: string) => {
+
+    }
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={['DateTimePicker']}>
-                <DateTimePicker label="Basic date time picker" />
-            </DemoContainer>
-        </LocalizationProvider>
+        <>
+            <DatePicker
+                format={props.format}
+            // onChange={handleChange}
+            />
+        </>
     );
 };
 

@@ -5,8 +5,9 @@ import { Home } from './components/pages/Home/Home';
 import { Contact } from './components/pages/Contact/Contact';
 import Event from './components/pages/Event/Event';
 import DetailEvent from './components/pages/Event/detailEvent';
-import Check from './components/layout/check/check';
+import Check from './components/layout/pay/payload/check';
 import { BrowserRouter, NavLink, Routes, Route } from 'react-router-dom';
+import PayTicker from './components/layout/pay/paySuccess/payTicker';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/LienHe" element={<Contact />} />
           <Route path="/detailEvent/:id" element={<DetailEvent />} />
           <Route path="/Check" element={<Check />} />
+          <Route path='/Ticker' element={<PayTicker />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -1,0 +1,139 @@
+.qr {
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    top: 8%;
+    bottom: 60.8%;
+    /* background: url(image.png); */
+}
+
+svg {
+    position: relative;
+    width: 189px;
+    left: -9px;
+}
+
+.PayTicker {
+    position: absolute;
+    width: 1063px;
+    height: 100px;
+    left: 429px;
+    top: 35px;
+    font-family: 'iCiel Koni';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 96px;
+    line-height: 100px;
+    color: #FFFFFF;
+}
+
+.TickerID {
+    position: absolute;
+    width: 210px;
+    height: 39px;
+    left: 75px;
+    top: 282px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    color: #000000;
+    border-bottom: 1px dashed;
+    padding-bottom: 10px;
+}
+
+.titleTicker {
+    position: absolute;
+    width: 118px;
+    height: 31px;
+    left: 119px;
+    top: 358px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFC226;
+}
+
+.dateTicker {
+    position: absolute;
+    width: 250px;
+    height: 26px;
+    left: 59px;
+    top: 402px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #23221F;
+}
+
+.iconTicker {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    left: calc(50% - 83px/2);
+    top: calc(50% - 48px/2 + 210px);
+}
+
+.btnDown {
+    position: absolute;
+    width: 100px;
+    left: 44.99%;
+    right: 50.68%;
+    top: 89.32%;
+    bottom: 6.06%;
+    background: #BD000B;
+    border-radius: 10px;
+}
+
+.sendEmailBTN {
+    position: absolute;
+    /* height: 100px; */
+    width: 100px;
+    left: 50.62%;
+    right: 41.04%;
+    top: 89.32%;
+    bottom: 6.06%;
+    background: #BD000B;
+    border-radius: 10px;
+}
+
+.btnDown:hover,
+.sendEmailBTN:hover {
+    cursor: pointer;
+    background-color: #FF000A;
+}
+
+.checkText {
+    position: absolute;
+    font-family: 'iCiel Koni';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+}
+
+.textContent {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    color: #989A9C;
+    padding: 0 12px;
+    padding-left: 10px;
+}

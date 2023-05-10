@@ -47,12 +47,12 @@ const FormContact: React.FC = () => {
             <form onSubmit={handleSubmit}>
                 <div className="ContacContent">
                     <div className="contactLeft">
-                        <input className='Name' type='text' placeholder='Tên' name='Name'
+                        <input className='Name text' type='text' placeholder='Tên' name='Name'
                             value={formData.Name || ""}
                             // {...register("Name")} 
                             onChange={handleInputChange}
                         />
-                        <input className='Phone' type='number' placeholder='Số Điện Thoại' name='Phone'
+                        <input className='Phone text' type='number' placeholder='Số Điện Thoại' name='Phone'
                             // {...register("Phone", { valueAsNumber: true })}
                             value={formData.Phone || ""}
                             onChange={handleInputChange}
@@ -60,19 +60,19 @@ const FormContact: React.FC = () => {
                         />
                     </div>
                     <div className="contactRight">
-                        <input className='email' type='email' placeholder='Email' name='email'
+                        <input className='email text' type='email' placeholder='Email' name='email'
                             // {...register("email")}
                             value={formData.email || ""}
                             onChange={handleInputChange}
                         />
 
-                        <input className='address' placeholder='Địa Chỉ' name='address'
+                        <input className='address text' placeholder='Địa Chỉ' name='address'
                             // {...register("address")}
                             value={formData.address || ""}
                             onChange={handleInputChange}
                         />
                     </div>
-                    <input className="message" placeholder='Lời Nhắn' name='message'
+                    <input className="message text" placeholder='Lời Nhắn' name='message'
                         // {...register("message")}
                         value={formData.message || ""}
                         onChange={handleInputChange}

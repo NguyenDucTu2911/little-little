@@ -15,7 +15,7 @@ import FormatDate from '../../format/formatDate';
 import { Button } from '../../../Html/Button';
 import { useNavigate } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
-import { ColorRing } from 'react-loader-spinner'
+import Loading from '../../Loading/Loading';
 interface EventProps { }
 
 const Backgrounds = styled.div`
@@ -79,15 +79,7 @@ const Event: React.FC<EventProps> = (props) => {
 
                     <p className='titleEvent'>Sự kiện nổi bật</p>
                     {error && <p>{error}</p>}
-                    {loading === true ? <ColorRing
-                        visible={true}
-                        height="80"
-                        width="80"
-                        ariaLabel="blocks-loading"
-                        wrapperStyle={{}}
-                        wrapperClass="blocks-wrapper"
-                        colors={['#b8c480', '#B2A3B5', '#F4442E', '#51E5FF', '#429EA6']}
-                    /> : <LazyLoad>
+                    {loading === true ? <Loading /> : <LazyLoad>
                         <Slider {...settings}>
                             {data.concat(data) && data.concat(data).length > 0 && data.concat(data).map((item, index) => {
                                 let formatVND = FormatVND(item.price)

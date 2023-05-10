@@ -23,9 +23,9 @@ span {
 .Datepicker {
     position: absolute;
     width: 200px;
-    height: 50px;
+    height: 46px;
     left: 209px;
-    top: 106px;
+    top: 125px;
     background: #FFFFFF;
     box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
     border-radius: 16px;
@@ -40,4 +40,120 @@ span {
     left: 14px;
     top: 56px;
     position: absolute;
+}
+
+.Quantity {
+    width: 150px;
+    left: 18px;
+    top: 127px;
+    position: absolute;
+    height: 66px;
+}
+
+.input-error,
+.InputQuantity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px 16px;
+    gap: 260px;
+
+    position: absolute;
+    width: 150px;
+    height: 17px;
+    /* left: 18px;
+    top: 127px; */
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+}
+
+.Combobox {
+    position: absolute;
+    width: 398px;
+    height: 49px;
+    left: 14px;
+    top: 56px;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+}
+
+.InputSdt {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px 16px;
+    gap: 260px;
+    position: absolute;
+    width: 372px;
+    height: 10px;
+    left: 12px;
+    top: 290px;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+}
+
+.InputEmail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px 16px;
+    gap: 260px;
+    position: absolute;
+    width: 373px;
+    height: 10px;
+    left: 15px;
+    top: 380px;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+}
+
+.Inputname {
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 20px 16px;
+    gap: 260px;
+    position: absolute;
+    width: 372px;
+    height: 10px;
+    left: 15px;
+    top: 205px;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+}
+
+.package {
+    position: absolute;
+    width: 398px;
+    height: 49px;
+    left: 14px;
+    top: 56px;
+}
+
+.packageInput {
+    position: absolute;
+    width: 398px;
+    height: 49px;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+}
+
+.error-message {
+    color: red;
+}
+
+.input-error {
+    border: 1px solid red;
+    position: relative;
 }

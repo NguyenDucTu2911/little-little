@@ -9,18 +9,21 @@ import Mid1 from "../../../assets/img/1.png"
 import Right from "../../../assets/img/5.png"
 import Buttons from "../../../assets/img/4.png"
 import Bg from "../../../assets/img/bg.png"
-import { Header } from '../../layout/header';
 import start from "../../../assets/img/Start.png"
 import vector from "../../../assets/img/Vector.png"
 import { Input } from '../../../Html/Input';
 import { Button } from '../../../Html/Button';
 import "./Home.css"
-import { useForm, SubmitHandler } from "react-hook-form";
-import DatePicker from '../../../Html/DatePickers';
-import { z, ZodType } from 'zod';
-import { zodResolver } from "@hookform/resolvers/zod"
 import { useNavigate } from 'react-router-dom';
-import Check from '../../layout/check/check';
+import { PayCustomer, addPay } from '../../../Store/slice/paySlice';
+import DatePicker from "react-datepicker";
+import formatDate from '../../format/formatDate';
+
+import "react-datepicker/dist/react-datepicker.css";
+import { useAppDispatch } from '../../../Store/hooks';
+import useLocalStorage from '../../customHook/useLocalStorage';
+import useSessionStorage from '../../customHook/useSessionStorage';
+
 const Backgrounds = styled.div`
     position: relative;
     width: 1920px;
@@ -313,126 +316,65 @@ const ContactHeaderContent = styled.p`
     color: #FFFFFF;
 `
 
-const Inputname = styled.input`
-    display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    padding: 20px 16px;
-    gap: 260px;
-    position: absolute;
-    width: 372px;
-    height: 10px;
-    left: 15px;
-    top: 205px;
-    background: #FFFFFF;
-    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
-    border-radius: 16px;
-`
-const InputEmail = styled.input`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 20px 16px;
-    gap: 260px;
-    position: absolute;
-    width: 373px;
-    height: 10px;
-    left: 15px;
-    top: 380px;
-    background: #FFFFFF;
-    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
-    border-radius: 16px;
-`
-
-const InputSdt = styled.input`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 20px 16px;
-    gap: 260px;
-    position: absolute;
-    width: 372px;
-    height: 10px;
-    left: 12px;
-    top: 290px;
-    background: #FFFFFF;
-    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
-    border-radius: 16px;
-`
-
-const InputQuantity = styled.input`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 15px 16px;
-    gap: 260px;
-
-    position: absolute;
-    width: 150px;
-    height: 17px;
-    left: 18px;
-    top: 127px;
-
-    /* W */
-
-    background: #FFFFFF;
-    /* inner shadow */
-
-    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
-    border-radius: 16px;
-`
-
-const Combobox = styled.select`
-    position: absolute;
-    width: 398px;
-    height: 49px;
-    left: 14px;
-    top: 56px;
-    background: #FFFFFF;
-    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
-    border-radius: 16px;
-`
-
-export type FormValues = {
-    Name: string;
-    Phone: number;
-    email: string;
-    quantity: number;
-    // Date: Date;
-};
-
-const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-];
 
 export const Home = () => {
-    const [selectedOption, setSelectedOption] = useState(null);
+    const dispatch = useAppDispatch();
     const navigate = useNavigate()
 
-    const schema: ZodType<FormValues> = z
-        .object({
-            Name: z.string().min(2).max(30),
-            email: z.string().email(),
-            quantity: z.number(),
-            Phone: z.number().min(10),
-            // Date: z.date().default(() => new Date())
+    const [formData, setFormData] = useSessionStorage<Partial<PayCustomer>>("pay", {});
+    const [formErrors, setFormErrors] = useState<Partial<PayCustomer>>({});
+    console.log(formData)
+    //set date
+    const newDate = formatDate(new Date())
+    const minDate = formatDate(new Date(new Date().setDate(new Date().getDate() - 1)))
+
+    useEffect(() => {
+        setFormData({
+            ...formData, date: newDate
         })
-    // .refine()
+    }, [])
 
-    const { register, handleSubmit,
-        formState: { errors }
-    } = useForm<FormValues>({ resolver: zodResolver(schema) })
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
+        setFormData({ ...formData, [name]: value });
+    }
 
-    const onSubmit = (data: FormValues) => {
-        // < Check {...data} />
-        navigate('/Check');
+    const changeSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const value = event.target.value;
+        setFormData({ ...formData, package: value })
+    }
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const errors: Partial<PayCustomer> = {};
+        if (!formData.package) {
+            errors.Name = 'Vui Lòng Chọn gói';
+        }
+        if (!formData.quantity) {
+            errors.quantity = 3;
+        }
+        if (!formData.Name) {
+            errors.Name = "Họ tên"
+        }
+        if (!formData.phone) {
+            errors.phone = 0
+        }
+        if (!formData.email) {
+            errors.email = "Nhập email"
+        }
+
+
+        setFormErrors(errors);
+
+        if (Object.keys(errors).length === 0) {
+            if (formData && formData.Name && formData.date && formData.package && formData.email
+                && formData.quantity && formData.phone) {
+                navigate('/Check');
+            } else {
+                alert("vui lòng nhập đầy đủ thông tin")
+            }
+
+        }
     }
     return (
         <>
@@ -486,33 +428,57 @@ export const Home = () => {
                                             </ContactHeaderContent>
                                         </ContactHeaderItem>
                                     </ContactHeader>
-                                    <form onSubmit={handleSubmit(onSubmit)}>
-                                        {/* <Select
-                                            className='combobox'
-                                            defaultValue={selectedOption}
-                                            // onChange={setSelectedOption}
-                                            options={options}
-                                        /> */}
-                                        <Combobox name='pack' >
-                                            <option value="volvo">Gói Gia Đình</option>
-                                            <option value="saab">Gói Vip</option>
-                                            <option value="mercedes">Gói Cặp đôi</option>
-                                        </Combobox>
-                                        <div className='quanyity'>
-                                            <InputQuantity {...register("quantity", { valueAsNumber: true })} placeholder='Số Lượng Vé' />
-                                            {/* {errors.Name && <span>vui long nhap so luong ve</span>} */}
-
+                                    <form onSubmit={handleSubmit}>
+                                        <div className="package">
+                                            <select className={formErrors.package ? "input-error" : "packageInput text"} name='pack' onChange={changeSelect} value={formData.package}>
+                                                <option value="">vui lòng chọn gói....</option>
+                                                <option value="GD">Gói Gia Đình</option>
+                                                <option value="VIP">Gói Vip</option>
+                                                <option value="CUPER">Gói Cặp đôi</option>
+                                            </select>
+                                            {formErrors.package && <div className='error-message'>{formErrors.package}</div>}
                                         </div>
-                                        <DatePicker className='Datepicker' onChange={(time) => console.log(time)} />
-                                        <Inputname {...register("Name")} placeholder="Họ Và Tên" />
-                                        <InputSdt {...register("Phone", { valueAsNumber: true })} placeholder="Số Điện Thoại" />
-                                        <InputEmail placeholder="Địa Chỉ Email" type="email" {...register("email")} />
-                                        {/* <CustomButton
-                                            className="btnBuy"
-                                            type="submit"
-                                            onclick={() => handleBuy()}
-                                            children="Đặt Vé"
-                                        /> */}
+                                        <div className='Quantity'>
+                                            <Input className={formErrors.quantity ? "input-error" : 'InputQuantity text'} type="number" name='quantity' id='quantity' placeholder='Số Lượng Vé'
+
+                                                handleChange={handleInputChange}
+                                                value={formData.quantity}
+                                            />
+                                            {formErrors.quantity && <div className='error-message'>{formErrors.quantity}</div>}
+                                        </div>
+
+                                        <div className="date">
+                                            <Input type='date' className='Datepicker text' name='date' id='date'
+
+                                                handleChange={handleInputChange}
+                                                value={formData.date}
+                                            />
+                                        </div>
+
+                                        <div className="name">
+                                            <Input className='Inputname text' type="text " name='Name' id='Name'
+                                                handleChange={handleInputChange}
+                                                value={formData.Name}
+                                                placeholder="Họ Và Tên" />
+                                        </div>
+
+                                        <div className="phone">
+                                            <Input className='InputSdt text' type="tel" name='phone' id='phone'
+                                                handleChange={handleInputChange}
+                                                value={formData.phone}
+                                                placeholder="Số Điện Thoại" />
+                                        </div>
+
+                                        <div className="emailHome">
+
+                                            <Input className='InputEmail text' type="email" name='email' id='email'
+                                                handleChange={handleInputChange}
+                                                value={formData.email}
+                                                placeholder="Địa Chỉ Email"
+                                            />
+                                        </div>
+
+
                                         <Button type="submit" className="btnBuy">Đặt Vé</Button>
                                     </form>
                                 </ContactLayOutBoder>

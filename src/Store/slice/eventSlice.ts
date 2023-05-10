@@ -2,17 +2,6 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { db } from "../../firebase/config";
 import { RootState } from "../store";
 
-export interface Customer {
-    Name: string,
-    price: number,
-    id: string,
-    email: string,
-    quantity: number,
-    Date: Date,
-    package: string
-
-}
-
 export interface events {
     id: string | number;
     name: string;
@@ -29,13 +18,6 @@ interface DataState {
     error: string | null;
     data: events[];
 }
-
-interface EventState {
-    data: events | null;
-    loading: boolean;
-    error: string | null;
-}
-
 
 const initialState: DataState = {
     loading: false,
@@ -79,6 +61,5 @@ const eventSlice = createSlice({
     },
 });
 
-// export const { createUses } = userSlice.actions
 export default eventSlice.reducer;
 

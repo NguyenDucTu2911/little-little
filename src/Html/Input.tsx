@@ -1,12 +1,26 @@
+import { min } from "moment";
+import { type } from "os";
 import React from "react";
 
 type inputProps = {
-    className: string
-    value: string,
-    placeholder: string
-    handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+    className?: string
+    value?: any,
+    placeholder?: string
+    type?: string,
+    name?: string,
+    id?: string
+    style?: any
+    handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input = (props: inputProps) => {
-    return <input className={props.className} type={props.value} value={props.value} onChange={props.handleChange} />;
+export const Input = ({ className, value, placeholder, type, name, id, handleChange, style }: inputProps) => {
+    return <input
+        className={className}
+        type={type}
+        value={value}
+        name={name}
+        id={id}
+        placeholder={placeholder}
+        style={style}
+        onChange={handleChange} />;
 };

@@ -1,0 +1,376 @@
+.titleCheck {
+    position: absolute;
+    width: 524px;
+    height: 100px;
+    left: 708px;
+    top: 144px;
+    font-family: 'iCiel Koni';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 96px;
+    line-height: 100px;
+    color: #FFFFFF;
+}
+
+.titleCheckLayout {
+    position: absolute;
+    width: 500px;
+    height: 80px;
+    top: -44px;
+    filter: drop-shadow(0px 4px 8px rgba(165, 15, 15, 0.45));
+}
+
+.titleL {
+    left: 250px;
+}
+
+.titleR {
+    left: 31px;
+}
+
+.titleCheckmaginL {
+    position: absolute;
+    left: 2.47%;
+    right: 14.32%;
+    top: 0px;
+    bottom: 0px;
+    background: linear-gradient(176.02deg, #FF000A -12.67%, #C2000B 101.08%);
+    border-radius: 10px 10px 50% 50%;
+}
+
+.titleCheckBorderL {
+    position: absolute;
+    left: 2.47%;
+    right: 2.32%;
+    top: 7px;
+    bottom: 9.59%;
+    border-radius: 10px 10px 50% 50%;
+    border: 1px dashed #FFFFFF;
+}
+
+.titleCheckText {
+    position: absolute;
+    left: 0.07%;
+    right: 0.38%;
+    top: -35.43%;
+    bottom: 69.63%;
+    font-family: 'iCiel Koni';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 34px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.dateCheck {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+
+    position: absolute;
+    width: 234px;
+    height: 94px;
+    left: 613px;
+    top: 81px;
+}
+
+.dateCheck-IP {
+    width: 234px;
+    height: 56px;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+
+.quantityCheck {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+
+    position: absolute;
+    width: 123px;
+    height: 94px;
+    left: 426px;
+    top: 81px;
+}
+
+.quantityCheck-IP {
+    width: 94px;
+    height: 56px;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.monneyCheck {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+
+    position: absolute;
+    width: 233px;
+    height: 94px;
+    left: 129px;
+    top: 81px;
+}
+
+.monneyCheck-IP {
+    width: 233px;
+    height: 56px;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.NameCheck {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+
+    position: absolute;
+    width: 391px;
+    height: 94px;
+    left: 129px;
+    top: 191px;
+}
+
+.NameCheck-IP {
+    width: 391px;
+    height: 56px;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.phoneCheck {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+
+    position: absolute;
+    width: 233px;
+    height: 94px;
+    left: 129px;
+    top: 301px;
+}
+
+.phoneCheck-IP {
+    width: 233px;
+    height: 56px;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.emailCheck {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+
+    position: absolute;
+    width: 391px;
+    height: 94px;
+    left: 129px;
+    top: 411px;
+}
+
+.emailCheck-IP {
+    width: 391px;
+    height: 56px;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.CheckText {
+    width: 194px;
+    height: 30px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 30px;
+    color: #23221F;
+}
+
+.group-Quantity {
+    display: flex;
+}
+
+.quantity-ve {
+    width: 21px;
+    height: 26px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    color: #23221F;
+    flex: none;
+    flex-grow: 0;
+    order: 1;
+    flex-grow: 0;
+    padding-left: 10px;
+}
+
+.CheckLayoutR {
+    position: absolute;
+    left: -1.53%;
+    right: 23.32%;
+    top: 1.46%;
+    bottom: 0.13%;
+    background: linear-gradient(176.02deg, #FF000A -12.67%, #C2000B 101.08%);
+    border-radius: 10px 10px 50% 50%;
+}
+
+.checkBorderR {
+    position: absolute;
+    left: 2%;
+    right: 2%;
+    top: 8%;
+    bottom: 9%;
+    border: 1px dashed #FFFFFF;
+    border-radius: 10px 10px 50% 50%
+}
+
+.bank {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+    position: absolute;
+    width: 376px;
+    height: 373px;
+    left: 31px;
+    top: 72px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 411px;
+    height: 94px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.inputCard {
+    width: 371px;
+    height: 50px;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.inputCvv {
+    width: 113px;
+    height: 50px;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 16px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+
+.Namecard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 411px;
+    height: 94px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.Datecard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 411px;
+    height: 94px;
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.cvvcard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 411px;
+    height: 94px;
+    flex: none;
+    order: 3;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.cardBtn {
+    position: absolute;
+    left: 15.2%;
+    right: 13.59%;
+    top: 106.14%;
+    bottom: -20.18%;
+    width: 271px;
+    height: 48px;
+    filter: drop-shadow(0px 4px 8px rgba(165, 15, 15, 0.45));
+    background: #BD000B;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.cardBtn:hover {
+    background: #FF000A;
+}
