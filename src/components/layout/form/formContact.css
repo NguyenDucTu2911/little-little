@@ -122,3 +122,26 @@
     font-size: 18px;
     line-height: 26px
 }
+
+.ValidateName {
+    position: absolute;
+    top: -25px;
+}
+
+.ValidatePhone {
+    position: absolute;
+    top: 64px;
+
+}
+
+.Validateemail {
+    position: absolute;
+    top: -25px;
+    right: 10px;
+}
+
+.Validateaddress {
+    position: absolute;
+    top: 62px;
+    right: 10px;
+}

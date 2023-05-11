@@ -4,7 +4,7 @@ import { db } from "../../firebase/config";
 export interface Contact {
     id: string | number;
     Name: string;
-    Phone: number;
+    Phone: string;
     email: string;
     address: string;
     message: string;

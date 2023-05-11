@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled'
 import LittleLittleLogo from "../../assets/img/Logo.png"
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import Phone from "../../assets/img/Vector (Stroke).png"
-
+import "./Header.css"
 
 const Navbar = styled("div")`
     position: absolute;
@@ -49,7 +49,7 @@ const HeaderNav = styled("div")`
     // top: 29px;
 `
 
-const HeaderNavLink = styled(Link)`
+const HeaderNavLink = styled(NavLink)`
 box-sizing: border-box;
 
 /* Auto layout */
@@ -113,14 +113,12 @@ top: 34px;
 `
 
 const IconPhone = styled("div")`
-width: 32px;
-height: 32px;
-/* Inside auto layout */
-flex: none;
-order: 0;
-flex-grow: 0;
-    background: url(${Phone});
-
+    width: 32px;
+    height: 32px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    background-image: url(${Phone});
 `
 
 
@@ -131,7 +129,7 @@ export const Header = () => {
             <Navbody>
                 <HeaderNav>
                     < HeaderNavLink to="/"
-                    // className={({isActive})=>(isActive? "active" : "")}
+                        className={({ isActive }) => (isActive ? "active" : "")}
                     ><Content>Trang chủ</Content></HeaderNavLink>
                     < HeaderNavLink to="/sukien"
 
@@ -139,9 +137,15 @@ export const Header = () => {
                     < HeaderNavLink to="/LienHe"
 
                     ><Content> Liên Hệ</Content></HeaderNavLink>
-                    <IconPhone />
+                    <div className="HeaderContact">
+                        <div className="contactImage">
+                            <div className="imagePhoneHeader" style={{ backgroundImage: `url(${Phone})` }} />
+                        </div>
+                        <p className='ContactTextHeader'> 0123456789</p>
+
+                    </div>
                 </HeaderNav>
             </Navbody>
-        </Navbar>
+        </Navbar >
     );
 };

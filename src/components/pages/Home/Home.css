@@ -20,15 +20,17 @@ span {
     color: #FF000A;
 }
 
+.input-date,
 .Datepicker {
     position: absolute;
-    width: 200px;
+    width: 188px;
     height: 46px;
     left: 209px;
     top: 125px;
     background: #FFFFFF;
     box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
     border-radius: 16px;
+    cursor: pointer;
 }
 
 .css-13cymwt-control {
@@ -79,6 +81,7 @@ span {
     border-radius: 16px;
 }
 
+.input-phone,
 .InputSdt {
     display: flex;
     flex-direction: row;
@@ -86,7 +89,7 @@ span {
     padding: 20px 16px;
     gap: 260px;
     position: absolute;
-    width: 372px;
+    width: 375px;
     height: 10px;
     left: 12px;
     top: 290px;
@@ -95,6 +98,7 @@ span {
     border-radius: 16px;
 }
 
+.input-email,
 .InputEmail {
     display: flex;
     flex-direction: row;
@@ -111,14 +115,10 @@ span {
     border-radius: 16px;
 }
 
+.input-Name,
 .Inputname {
     display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
     flex-direction: row;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
     padding: 20px 16px;
     gap: 260px;
@@ -140,6 +140,7 @@ span {
     top: 56px;
 }
 
+.input-package,
 .packageInput {
     position: absolute;
     width: 398px;
@@ -147,13 +148,96 @@ span {
     background: #FFFFFF;
     box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
     border-radius: 16px;
+    cursor: pointer;
 }
 
-.error-message {
-    color: red;
-}
-
+.input-package,
+.input-email,
+.input-phone,
+.input-Name,
+.input-date,
 .input-error {
     border: 1px solid red;
-    position: relative;
+    /* position: relative; */
+}
+
+.error-Quantity {
+    position: absolute;
+    top: -19px;
+}
+
+.ContentItem1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+
+    position: absolute;
+    width: 748px;
+    height: 40px;
+    left: 127px;
+    top: 239px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+
+    position: absolute;
+    width: 748px;
+    height: 40px;
+    left: 127px;
+    top: 239px;
+}
+
+.ContentItem2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+
+    position: absolute;
+    width: 748px;
+    height: 40px;
+    left: 127px;
+    top: 295px;
+}
+
+.ContentItem3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+
+    position: absolute;
+    width: 748px;
+    height: 40px;
+    left: 127px;
+    top: 351px;
+}
+
+.ContentItem4 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+
+    position: absolute;
+    width: 748px;
+    height: 40px;
+    left: 127px;
+    top: 407px;
+}
+
+.imageStart {
+    width: 37px;
+    height: 40px;
+    flex: none;
+    flex-grow: 0;
+    order: 0;
+    flex-grow: 0;
 }

@@ -7,14 +7,14 @@ export interface PayCustomer {
     price: number | string,
     id: string,
     email: string,
-    quantity: number,
+    quantity: string,
     date: Date | string
     package: string
-    phone: number
-    card: number
+    phone: string
+    card: string
     Namecard: string
-    Datecard: Date
-    cvv: Number
+    Datecard: Date | string
+    cvv: string
 
 }
 
@@ -36,12 +36,6 @@ export const addPay = createAsyncThunk("pay/addPay", async (newData: PayCustomer
     await db.collection("ticker").add(newData)
     return { ...newData } as PayCustomer
 })
-
-export const fetchPay = createAsyncThunk("pay/fetchPay", async () => {
-
-})
-
-
 
 const paySlice = createSlice({
     name: "pay",

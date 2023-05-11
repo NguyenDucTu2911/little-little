@@ -45,11 +45,14 @@ const Layout = styled.div`
 
 const IconLisa = styled.image`
     position: absolute;
-    width: 323px;
-    height: 510px;
+    width: 332px;
+    height: 467px;
     left: -205px;
-    top: 131px;
-    background: url(${lisa});
+    top: 176px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(${lisa});
 `
 
 const Iconleft = styled.image`
@@ -234,7 +237,6 @@ width: 703px;
     flex: none;
     order: 1;
     flex-grow: 0;
-    padding-left: 44px;
 `
 
 const Margin = styled.image`
@@ -323,7 +325,7 @@ export const Home = () => {
 
     const [formData, setFormData] = useSessionStorage<Partial<PayCustomer>>("pay", {});
     const [formErrors, setFormErrors] = useState<Partial<PayCustomer>>({});
-    console.log(formData)
+
     //set date
     const newDate = formatDate(new Date())
     const minDate = formatDate(new Date(new Date().setDate(new Date().getDate() - 1)))
@@ -348,22 +350,28 @@ export const Home = () => {
         event.preventDefault();
         const errors: Partial<PayCustomer> = {};
         if (!formData.package) {
-            errors.Name = 'Vui Lòng Chọn gói';
+            errors.package = 'Vui Lòng Chọn gói';
         }
         if (!formData.quantity) {
-            errors.quantity = 3;
+            errors.quantity = "nhập số lượng";
         }
+        // Name validation
         if (!formData.Name) {
-            errors.Name = "Họ tên"
+            errors.Name = 'Name is required';
         }
+        // Phone validation
         if (!formData.phone) {
-            errors.phone = 0
+            errors.phone = 'Phone is required';
+        } else if (!/^\d{10}$/i.test(formData.phone.trim())) {
+            errors.phone = 'Phone number must be 10 digits';
         }
+
+        // Email validation
         if (!formData.email) {
-            errors.email = "Nhập email"
+            errors.email = 'Email is required';
+        } else if (!/\S+@\S+\.\S+/.test(formData.email.trim())) {
+            errors.email = 'Email is invalid';
         }
-
-
         setFormErrors(errors);
 
         if (Object.keys(errors).length === 0) {
@@ -399,19 +407,31 @@ export const Home = () => {
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac mollis justo. Etiam volutpat tellus quis risus volutpat, ut posuere ex facilisis.<br /><br />
                                     Suspendisse iaculis libero lobortis condimentum gravida. Aenean auctor iaculis risus, lobortis molestie lectus consequat a.
                                 </Content>
-                                <ContentButton>
+                                {/* <ContentButton> */}
+                                <div className="ContentItem1">
+                                    <div className="imageStart" style={{ backgroundImage: (`url(${start})`) }}></div>
                                     <ContentButtonItem>
-
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
-
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
-
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
-
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
                                     </ContentButtonItem>
-                                </ContentButton>
+                                </div>
+                                <div className="ContentItem2">
+                                    <div className="imageStart" style={{ backgroundImage: (`url(${start})`) }}></div>
+                                    <ContentButtonItem>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </ContentButtonItem>
+                                </div>
+                                <div className="ContentItem3">
+                                    <div className="imageStart" style={{ backgroundImage: (`url(${start})`) }}></div>
+                                    <ContentButtonItem>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </ContentButtonItem>
+                                </div>
+                                <div className="ContentItem4">
+                                    <div className="imageStart" style={{ backgroundImage: (`url(${start})`) }}></div>
+                                    <ContentButtonItem>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </ContentButtonItem>
+                                </div>
                             </DecorationBoder>
                             <Margin />
                         </DecorationBody>
@@ -430,25 +450,25 @@ export const Home = () => {
                                     </ContactHeader>
                                     <form onSubmit={handleSubmit}>
                                         <div className="package">
-                                            <select className={formErrors.package ? "input-error" : "packageInput text"} name='pack' onChange={changeSelect} value={formData.package}>
-                                                <option value="">vui lòng chọn gói....</option>
+                                            <select id="pack" className={formErrors.package ? "input-package" : "packageInput text"} name='pack' onChange={changeSelect} value={formData.package}>
+                                                <option value="">---vui lòng chọn gói---</option>
                                                 <option value="GD">Gói Gia Đình</option>
                                                 <option value="VIP">Gói Vip</option>
                                                 <option value="CUPER">Gói Cặp đôi</option>
                                             </select>
-                                            {formErrors.package && <div className='error-message'>{formErrors.package}</div>}
+                                            {/* {formErrors.package && <span className='error-message'>{formErrors.package}</span>} */}
                                         </div>
                                         <div className='Quantity'>
-                                            <Input className={formErrors.quantity ? "input-error" : 'InputQuantity text'} type="number" name='quantity' id='quantity' placeholder='Số Lượng Vé'
+                                            <Input className={formErrors.quantity ? "input-error" : 'InputQuantity text'} type="text" name='quantity' id='quantity' placeholder='Số Lượng Vé'
 
                                                 handleChange={handleInputChange}
                                                 value={formData.quantity}
                                             />
-                                            {formErrors.quantity && <div className='error-message'>{formErrors.quantity}</div>}
+                                            {/* {formErrors.quantity && <span className='error-Quantity'>{formErrors.quantity}</span>} */}
                                         </div>
 
                                         <div className="date">
-                                            <Input type='date' className='Datepicker text' name='date' id='date'
+                                            <Input type='date' className={formErrors.date ? "input-date" : 'Datepicker text'} name='date' id='date'
 
                                                 handleChange={handleInputChange}
                                                 value={formData.date}
@@ -456,14 +476,16 @@ export const Home = () => {
                                         </div>
 
                                         <div className="name">
-                                            <Input className='Inputname text' type="text " name='Name' id='Name'
+                                            <Input className={formErrors.Name ? "input-Name" : 'Inputname text'}
+                                                type="text " name='Name' id='Name'
                                                 handleChange={handleInputChange}
                                                 value={formData.Name}
                                                 placeholder="Họ Và Tên" />
                                         </div>
 
                                         <div className="phone">
-                                            <Input className='InputSdt text' type="tel" name='phone' id='phone'
+                                            <Input className={formErrors.phone ? "input-phone" : 'InputSdt text'}
+                                                type="tel" name='phone' id='phone'
                                                 handleChange={handleInputChange}
                                                 value={formData.phone}
                                                 placeholder="Số Điện Thoại" />
@@ -471,7 +493,8 @@ export const Home = () => {
 
                                         <div className="emailHome">
 
-                                            <Input className='InputEmail text' type="email" name='email' id='email'
+                                            <Input className={formErrors.email ? "input-email" : 'InputEmail text'}
+                                                type="email" name='email' id='email'
                                                 handleChange={handleInputChange}
                                                 value={formData.email}
                                                 placeholder="Địa Chỉ Email"

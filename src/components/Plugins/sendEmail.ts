@@ -1,30 +1,16 @@
-import nodemailer, { Transporter } from 'nodemailer';
+import emailjs from '@emailjs/browser';
 
-interface EmailData {
-    to: string;
-    subject: string;
-    text: string;
-}
 
-export async function sendEmail(emailData: EmailData) {
-    const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 465,
-        secure: true,
-        auth: {
-            user: process.env.EMAIL,
-            pass: process.env.MAIL_APP_PASSWORD,
-        },
-    });
+export function sendEmail() {
+    const serviceId = "service_n4895xg" || process.env.YOUR_SERVICE_ID;
+    const templateId = "template_tn80jia" || process.env.YOUR_TEMPLATE_ID;
+    const userId = "o3Cbjm-DMJh0v7Vee" || process.env.YOUR_USER_ID;
 
-    const mailOptions = {
-        from: 'your-gmail-username',
-        to: emailData.to,
-        subject: emailData.subject,
-        text: emailData.text,
-    };
-
-    const info = await transporter.sendMail(mailOptions);
-
-    console.log(`Message sent: ${info.messageId}`);
+    emailjs.send(serviceId, templateId, {}, userId)
+        .then((response) => {
+            console.log('Email sent successfully', response);
+        })
+        .catch((error) => {
+            console.error('Email failed to send', error);
+        });
 }

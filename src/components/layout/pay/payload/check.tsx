@@ -6,7 +6,7 @@ import vector from "../../../../assets/img/Vector.png";
 import votay from "../../../../assets/img/Votay.png";
 import { Input } from '../../../../Html/Input';
 import { Button } from '../../../../Html/Button';
-import { PayCustomer } from '../../../../Store/slice/paySlice';
+import { PayCustomer, } from '../../../../Store/slice/paySlice';
 import useSessionStorage from '../../../customHook/useSessionStorage';
 import formatVND from '../../../format/formatVND';
 import { addPay } from '../../../../Store/slice/paySlice';
@@ -128,6 +128,9 @@ const Votay = styled.image`
 
 const Check: React.FC = () => {
     const [formData, setFormData] = useSessionStorage<Partial<PayCustomer>>("pay", {});
+    const [formErrors, setFormErrors] = useState<Partial<PayCustomer>>({});
+    console.log(formData)
+
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
@@ -145,13 +148,13 @@ const Check: React.FC = () => {
             let price;
             let quantity = formData.quantity
             if (formData.package === "GD") {
-                price = quantity ? quantity * 50000 : 0
+                price = quantity ? Number(quantity) * 50000 : 0
             }
             if (formData.package === "VIP") {
-                price = quantity ? quantity * 10000 : 0
+                price = quantity ? Number(quantity) * 10000 : 0
             }
             if (formData.package === "CUPER") {
-                price = quantity ? quantity * 25000 : 0
+                price = quantity ? Number(quantity) * 25000 : 0
             }
             if (price) {
                 const pricevnd = formatVND(price)
@@ -164,9 +167,44 @@ const Check: React.FC = () => {
     }
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        dispatch(addPay(formData as PayCustomer))
-        navigate('/Ticker');
-        setFormData({})
+        const errors: Partial<PayCustomer> = {};
+
+        // Credit card number validation
+        if (!formData.card) {
+            errors.card = 'Card number is required';
+        } else if (formData.card.length !== 16) {
+            errors.card = 'Card number must be 16 digits';
+        }
+
+        // Cardholder name validation
+        if (!formData.Namecard) {
+            errors.Namecard = ('Cardholder name is required');
+        }
+        // Expiration date validation
+        if (!formData.Datecard) {
+            errors.Datecard = ('Expiration date is required');
+        }
+
+        // CVV/CVC validation
+        if (!formData.cvv) {
+            errors.cvv = ('CVV/CVC is required');
+        } else if (formData.cvv.length !== 3) {
+            errors.cvv = ('CVV/CVC must be 3 digits');
+        }
+
+        setFormErrors(errors);
+
+
+        if (Object.keys(errors).length === 0) {
+            if (formData && formData.card && formData.Namecard && formData.Datecard && formData.cvv) {
+                dispatch(addPay(formData as PayCustomer))
+                navigate('/Ticker');
+                setFormData({})
+            } else {
+                //toast
+            }
+
+        }
     }
 
     return (
@@ -254,10 +292,12 @@ const Check: React.FC = () => {
                                         <form onSubmit={handleSubmit}>
                                             <div className="card">
                                                 <label className='CheckText' htmlFor="card">Số thẻ</label>
-                                                <Input type='number' className='inputCard text' name='card' id='card'
+                                                <Input type='text' className='inputCard text' name='card' id='card'
                                                     placeholder='Số Thẻ'
                                                     handleChange={handleInputChange}
                                                 />
+                                                {formErrors.card && <span className='input-card'>{formErrors.card}</span>}
+
                                             </div>
                                             <div className="Namecard">
                                                 <label className='CheckText' htmlFor="Namecard">Họ tên chủ thẻ</label>
@@ -265,6 +305,8 @@ const Check: React.FC = () => {
                                                     placeholder='Họ tên chủ thẻ'
                                                     handleChange={handleInputChange}
                                                 />
+                                                {formErrors.Namecard && <span className='input-card'>{formErrors.Namecard}</span>}
+
                                             </div>
                                             <div className="Datecard">
                                                 <label className='CheckText' htmlFor="Datecard">Ngày hết hạn</label>
@@ -272,13 +314,17 @@ const Check: React.FC = () => {
                                                     placeholder='Ngày hết hạn'
                                                     handleChange={handleInputChange}
                                                 />
+                                                {formErrors.Datecard && <span className='input-card'>{`${formErrors.Datecard}`}</span>}
+
                                             </div>
                                             <div className="cvvcard ">
                                                 <label className='CheckText' htmlFor="cvv">CVV/CVC</label>
-                                                <Input type='number' className='inputCvv text' name='cvv' id='cvv'
+                                                <Input type='text' className='inputCvv text' name='cvv' id='cvv'
                                                     placeholder='CVV/CVC'
                                                     handleChange={handleInputChange}
                                                 />
+                                                {formErrors.cvv && <span className='input-cvv'>{formErrors.cvv}</span>}
+
                                             </div>
                                             <Button type="submit" className="cardBtn">Thanh toán</Button>
                                         </form>

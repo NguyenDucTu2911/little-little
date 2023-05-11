@@ -374,3 +374,15 @@
 .cardBtn:hover {
     background: #FF000A;
 }
+
+.input-card {
+    position: absolute;
+    right: 0;
+    padding-top: 10px;
+}
+
+.input-cvv {
+    position: absolute;
+    right: 25%;
+    line-height: 132px;
+}
