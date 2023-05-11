@@ -39,7 +39,7 @@ const Layout = styled.div`
     background: url(${Bg});
 `
 
-const PayTicker: React.FC<PayTickerProps> = (props) => {
+const payTicket: React.FC<PayTickerProps> = (props) => {
 
     const Ticker = useAppSelector((state: RootState) => state.pay.data);
     const loading = useAppSelector((state: RootState) => state.pay.loading);
@@ -92,44 +92,44 @@ const PayTicker: React.FC<PayTickerProps> = (props) => {
 
                 <Layout>
                     <header><p className='PayTicker'>Thanh toán thành công</p></header>
-                    
-                        {loading === true ? <Loading /> : <LazyLoad>
-                            <Slider {...settings}>
-                                {Ticker && Ticker.map((Item: PayCustomer, index) => {
 
-                                    return (
-                                        <div ref={divRef} className="customize">
-                                            <div className='event-item'
-                                                key={index}
-                                            >
-                                                <div className="qr">
+                    {loading === true ? <Loading /> : <LazyLoad>
+                        <Slider {...settings}>
+                            {Ticker && Ticker.map((Item: PayCustomer, index) => {
 
-                                                    <QRCode
-                                                        value={`<p>${Item.Name}</p>
+                                return (
+                                    <div ref={divRef} className="customize">
+                                        <div className='event-item'
+                                            key={index}
+                                        >
+                                            <div className="qr">
+
+                                                <QRCode
+                                                    value={`<p>${Item.Name}</p>
                                             <div>số lượng vé: ${Item.quantity}</div>
                                             <div>ngày Sử dụng: ${Item.date}</div>
                                             `}
-                                                    />
-                                                </div>
-                                                <div className="TickerID">ALT2021050{index + 1}</div>
-                                                <div className="titleTicker">VÉ CỔNG</div>
-                                                <div className="dateTicker">Ngày sử dụng: {`${Item.date}`}</div>
-                                                <div className="iconTicker" style={{ backgroundImage: `url(${Tick})` }}></div>
+                                                />
                                             </div>
+                                            <div className="TickerID">ALT2021050{index + 1}</div>
+                                            <div className="titleTicker">VÉ CỔNG</div>
+                                            <div className="dateTicker">Ngày sử dụng: {`${Item.date}`}</div>
+                                            <div className="iconTicker" style={{ backgroundImage: `url(${Tick})` }}></div>
                                         </div>
+                                    </div>
 
-                                    )
-                                })}
-                            </Slider>
-                        </LazyLoad>}
+                                )
+                            })}
+                        </Slider>
+                    </LazyLoad>}
 
 
-                        <Button className="btnDown checkText"
-                            onClick={handleDownloadClick}
-                        >Tải vé</Button>
-                        <Button className="sendEmailBTN checkText"
-                            type="submit"
-                        >Gửi Email</Button>
+                    <Button className="btnDown checkText"
+                        onClick={handleDownloadClick}
+                    >Tải vé</Button>
+                    <Button className="sendEmailBTN checkText"
+                        type="submit"
+                    >Gửi Email</Button>
                 </Layout>
 
             </Backgrounds>
@@ -137,4 +137,4 @@ const PayTicker: React.FC<PayTickerProps> = (props) => {
     );
 };
 
-export default PayTicker;
+export default payTicket;
