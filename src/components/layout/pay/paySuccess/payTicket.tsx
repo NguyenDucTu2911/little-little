@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./payTicker.css"
 import QRCode from 'react-qr-code';
 import Tick from "../../../../assets/img/tick.png"
 import { Button } from '../../../../Html/Button';
@@ -18,6 +17,7 @@ import LazyLoad from 'react-lazyload';
 import Loading from '../../../Loading/Loading';
 import html2canvas from 'html2canvas';
 import emailjs from '@emailjs/browser';
+import "./payTicket.css"
 
 interface PayTickerProps { }
 
